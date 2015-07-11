@@ -1,0 +1,16 @@
+*.swp
+*.pyc
+*.bak
+.vagrant
+celerybeat-schedule
+bin
+lib
+include
+local_settings.py
+.DS_Store
+doc/build/*
+.idea
+
+*.sublime-project
+
+*.sublime-workspace
