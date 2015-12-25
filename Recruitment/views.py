@@ -100,8 +100,7 @@ def get_application(request, app_type_id):
     if not app_type.require_account and not request.user.is_authenticated():
         return applicant_register(request, app_type)
     app = app_type.start_application(request.user)
-    return HttpResponseRedirect(
-            reverse('Recruitment.views.get_application_form', args=(app.pk,)))
+    return HttpResponseRedirect('recruitment/application/' + str(app.pk))
 
 @login_required
 def get_application_form(request, app_id):
