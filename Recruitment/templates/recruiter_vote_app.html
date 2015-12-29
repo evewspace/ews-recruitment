@@ -6,9 +6,9 @@
                 <th width='60%'>Status</th>
                 <th>
                 {% if accept < app.app_type.required_votes %}
-                	 <span class="badge badge-important">&#x2717;</span>
+                	 <span class="label label-pills label-danger">&#x2717;</span>
                 {% else %} 
-                	 <span class="badge badge-success">&#x2713;</span>
+                	 <span class="label label-pills label-success">&#x2713;</span>
                 {% endif %}
                 </th>
             </tr>
@@ -31,23 +31,29 @@
         </table>
         <form id="voteForm">
 			<div id="voteDiv">
-			    <label class="radio">
-                    <input name="appVote" value="1" type="radio"> Accept
-                </label>
-                <label class="radio">
-                    <input name="appVote" value="2" type="radio"> Reject
-                </label>
-                <label class="radio">
-                    <input name="appVote" value="3" type="radio"> Defer
-                </label>
+				<div class="radio">
+				    <label>
+	                    <input name="appVote" value="1" type="radio"> Accept
+	                </label>
+	            </div>
+	            <div class="radio">
+	                <label>
+	                    <input name="appVote" value="2" type="radio"> Reject
+	                </label>
+	            </div>
+                <div class="radio">
+	                <label>
+	                    <input name="appVote" value="3" type="radio"> Defer
+	                </label>
+	            </div>
                 <br />
 				<label for="appVoteComment" class="control-label">Comment:</label>
 			    <div class="controls">
-			        <textarea class="form-control input-xxlarge" rows="5" id="appVoteComment" name="appVoteComment"></textarea>
+			        <textarea class="form-control input-margin" rows="5" id="appVoteComment" name="appVoteComment"></textarea>
 				</div>
 			</div>
-			<div class="controls">
-		    	<button type="submit" class="btn btn-success" onclick=";">Vote</button>
+			<div class="controls input-margin">
+		    	<button type="submit" class="btn btn-sm btn-primary" onclick=";">Vote</button>
 			</div>
 		</form>
 		<table class="table table-hover table-bordered">

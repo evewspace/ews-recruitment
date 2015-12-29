@@ -1,13 +1,13 @@
 {% extends "app_base.html" %}
 {% block contentheader %}
 {% if app.instructions and not status_view %}
-<div style="margin-left: 10%;">
+<div>
     <h4>Instructions: {{app.instructions}}</h4>
 </div>
 {% endif %}
 {% endblock %}
 {% block content %}
-<div class="well">
+<div class="well" style="max-width: 1500px">
     <ul class="nav nav-pills">
         <li class="active"><a href="#api-tab" data-toggle="tab">API Keys</a></li>
         {% if not status_view %}
@@ -30,27 +30,33 @@
     <div class="tab-content">
         <div class="tab-pane active" id="api-tab">
             <h3>API Information:</h3>
-            <div class="row span12">
+            <div class="row">
                 <div id="api_alert_placeholder">
                 </div>
-                <div class="span5">
-                    <h4>Add a key:</h4>
+                <div class="col-md-5">
+                	<div class="form-actions">
+                        <div class="col-md-10 col-md-offset-2"> 
+                    		<h4>Add a key:</h4>
+                    	</div>
+                    </div>
                     <div class="form-horizontal" id="api_add_key">
                         <input type="hidden" name="user_id" value="{{user.pk}}">
-                        <div class="control-group">
-                            <label for="api_key_id" class="control-label">Key ID:</label>
-                            <div class="controls">
-                                <input class="input-small" type="text" name="key_id" id="api_key_id">
+                        <div class="form-group">
+                            <label for="api_key_id" class="control-label col-md-2">Key ID:</label>
+                            <div class="controls col-md-10">
+                                <input class="input-sm form-control" type="text" name="key_id" id="api_key_id">
                             </div>
                         </div>
-                        <div class="control-group">
-                            <label for="api_key_vcode" class="control-label">vCode:</label>
-                            <div class="controls">
-                                <input type="text" name="vcode" id="api_key_vcode" class="input-large">
+                        <div class="form-group">
+                            <label for="api_key_vcode" class="control-label col-md-2">vCode:</label>
+                            <div class="controls col-md-10">
+                                <input type="text" name="vcode" id="api_key_vcode" class="input-sm form-control">
                             </div>
                         </div>
-                        <div class="form-actions">
-                            <button id="api_key_add_btn" type="button" onclick="ApplicantAddAPI({{application.pk}});" class="btn btn-info">Add Key</button>
+                        <div class="form-group">
+                        	<div class="col-md-10 col-md-offset-2"> 
+                            	<button id="api_key_add_btn" type="button" onclick="ApplicantAddAPI({{application.pk}});" class="btn btn-sm btn-primary">Add Key</button>
+                            </div>
                         </div>
                     </div>
                     <script type="text/javascript">
@@ -60,7 +66,7 @@
                                 });
                     </script>
                 </div>
-                <div id="api_keys_on_file" class="span5 offset1">
+                <div id="api_keys_on_file" class="col-md-5 col-md-offset-1">
                     {% include "api_widget.html" %} 
                 </div>
             </div>
@@ -87,7 +93,7 @@
                 When you are ready to submit your application, please click below. You will not be able to edit the application once submitted; however, you will be able to edit your API keys from the status page.
             </p>
             <br />
-            <button class="btn btn-large btn-info" id="btn-app-submit" type="submit">Submit Application</button>
+            <button class="btn btn-primary" id="btn-app-submit" type="submit">Submit Application</button>
         </div>
     </form>
     </div>

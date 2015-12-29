@@ -15,7 +15,9 @@ function GetAddWorkflowDialog(){
         type: "GET",
         url: "/recruitment/workflow/new/",
         success: function(data){
-            $('#modalHolder').html(data).modal('show');
+            recreateModalHolder();
+            $('#modalHolder').html(data);
+            $('#modalHolder').parent().show();
         }
     });
 }
@@ -25,7 +27,9 @@ function GetEditWorkflowDialog(step_id){
         type: "GET",
         url: "/recruitment/workflow/edit/" + step_id + "/",
         success: function(data){
-            $('#modalHolder').html(data).modal('show');
+            recreateModalHolder();
+            $('#modalHolder').html(data);
+            $('#modalHolder').parent().show();
         }
     });
 }

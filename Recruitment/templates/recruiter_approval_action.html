@@ -2,7 +2,7 @@
 <div id="recruiterApprovalAction">
         <h3>{{approve_action.action.name}}</h3>
         {% if approve_action.action.description %}
-            <p class="infoText label label-info">{{approve_action.action.description}}</p>
+            <p class="infoText label label-pill label-primary">{{approve_action.action.description}}</p><br /><br />
         {% endif %}
         <table class="table table-hover table-bordered">
             <tr>
@@ -31,11 +31,11 @@
 			<div id="approveDiv">
 				<label for="actionComment" class="control-label">Comment:</label>
 			    <div class="controls">
-			        <textarea class="form-control input-xxlarge" rows="5" id="actionComment" name="actionComment"></textarea>
+			        <textarea class="form-control input-margin" rows="5" id="actionComment" name="actionComment"></textarea>
 				</div>
 			</div>
 			<div class="controls">
-		    	<button type="submit" class="btn btn-success" onclick=";">Sign off</button>
+		    	<button type="submit" class="btn btn-sm btn-primary" onclick=";">Sign off</button>
 			</div>
 		</form>
 </div>

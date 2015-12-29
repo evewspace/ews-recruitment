@@ -1,49 +1,57 @@
 <div class="modal-header">
-    <h2>Edit Question</h2>
+	<div class="form-group">
+		<div class="col-md-10 col-md-offset-2">
+    		<h4>Edit Question</h4>
+    	</div>
+    </div>
 </div>
 <div class="modal-body">
     <form class="form-horizontal" id="question{{question.pk}}EditForm">
-        <div class="control-group">
-            <label class="control-label" for="question{{question.pk}}Question">Question:</label>
-            <div class="controls">
-                <input type="text" id="question{{question.pk}}Question" name="question" value="{{question.question}}"> &nbsp;
-                 <label class="checkbox inline">
-                     <input type="checkbox" {% if question.required %}checked="checked"{% endif %}name="required"> Required
-                </label>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="question{{question.pk}}Question">Question:</label>
+            <div class="controls col-md-10">
+                <input type="text" id="question{{question.pk}}Question" class="input-sm form-control" name="question" value="{{question.question}}"> &nbsp;
+           	</div>
+           	<div class="col-md-10 col-md-offset-2" style="margin-top: -15px; margin-right: 5px">
+           		<div class="checkbox">
+	           		<label>
+	                     <input type="checkbox" {% if question.required %}checked="checked"{% endif %}name="required"> Required
+	                </label>
+	            </div>
            </div>
        </div>
-       <div class="control-group">
-           <label class="control-label" for="question{{question.pk}}Description">Description:</label>
-           <div class="controls">
-               <textarea id="question{{question.pk}}Description" name="description">{% if question.description %}{{question.description}}{% endif %}</textarea>
+       <div class="form-group">
+           <label class="control-label col-md-2" for="question{{question.pk}}Description">Description:</label>
+           <div class="controls col-md-10">
+               <textarea id="question{{question.pk}}Description" class="input-sm form-control" name="description">{% if question.description %}{{question.description}}{% endif %}</textarea>
            </div>
        </div>
-        <div class="control-group">
-            <div class="controls">
-                <label class="radio inline">
+        <div class="form-group">
+            <div class="controls col-md-12">
+                <label class="radio-inline">
                     <input type="radio" name="type" value="1" {% if question.question_type == 1 %}checked="checked"{% endif %} onclick="$('#question{{question.pk}}ChoicesDiv').hide();"> Text Field
                 </label>
-                <label class="radio inline">
+                <label class="radio-inline">
                     <input type="radio" name="type" value="2" {% if question.question_type == 2 %}checked="checked"{% endif %} onclick="$('#question{{question.pk}}ChoicesDiv').hide();" > Text Box
                 </label>
-                <label class="radio inline">
+                <label class="radio-inline">
                     <input type="radio" name="type" value="3" {% if question.question_type == 3 %}checked="checked"{% endif %} onclick="$('#question{{question.pk}}ChoicesDiv').show();"> Radio Buttons (single)
                 </label>
-                <label class="radio inline">
+                <label class="radio-inline">
                     <input type="radio" name="type" value="4" {% if question.question_type == 4 %}checked="checked"{% endif %} onclick="$('#question{{question.pk}}ChoicesDiv').show();"> Checkboxes (multiple)
                 </label>
             </div>
         </div>
-        <div class="control-group">
-            <label class="control-label" for="question{{question.pk}}NewOrder">Order:</label>
-            <div class="controls">
-                <input type="text" class="input-mini" name="order" id="question{{question.pk}}NewOrder" value="{{question.order}}">
+        <div class="form-group">
+            <label class="control-label col-md-2" for="question{{question.pk}}NewOrder">Order:</label>
+            <div class="controls col-md-10">
+                <input type="text" class="input-sm form-control" name="order" id="question{{question.pk}}NewOrder" value="{{question.order}}">
             </div>
         </div>
-        <div class="control-group" id="question{{question.pk}}ChoicesDiv" {% if question.question_type < 3 %}style="display: none;"{% endif %}>
-            <label class="control-label" for="question{{question.pk}}NewChoices">Choices (one per line):</label>
-            <div class="controls">
-                <textarea id="question{{question.pk}}NewChoices" name="choices">{% for choice in question.choices.all %}
+        <div class="form-group" id="question{{question.pk}}ChoicesDiv" {% if question.question_type < 3 %}style="display: none;"{% endif %}>
+            <label class="control-label col-md-2" for="question{{question.pk}}NewChoices">Choices (one per line):</label>
+            <div class="controls col-md-10">
+                <textarea id="question{{question.pk}}NewChoices" class="input-sm form-control" name="choices">{% for choice in question.choices.all %}
 {{choice.value|safe}}{% endfor %}</textarea>
             </div>
         </div>
@@ -57,6 +65,6 @@
     </script>
 </div>
 <div class="modal-footer">
-    <button onclick="$('#question{{question.pk}}EditForm').submit()" class="btn btn-success">Save Question</button>
-    <button class="btn btn-primary" onclick="$('#modalHolder').modal('hide');">Cancel</button>
+    <button onclick="$('#question{{question.pk}}EditForm').submit()" class="btn btn-sm btn-primary">Save Question</button>
+    <button class="btn btn-sm btn-danger" onclick="$('#modalHolder').parent().hide();">Cancel</button>
 </div>
