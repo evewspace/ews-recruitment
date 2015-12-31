@@ -288,7 +288,7 @@ class Application(models.Model):
         if action.action_type == 2:
             CountersignAction(action=action, application=self).save()
         if action.action_type == 3:
-            VoteAction(action=action, application=self).save()
+            ActionEntry(action=action, application=self).save()
 
     def recreate_workflow_entry(self, action):
         """
