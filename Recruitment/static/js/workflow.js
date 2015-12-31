@@ -40,7 +40,7 @@ function SaveNewWorkflowAction() {
         url: "/recruitment/workflow/new/",
         data: $('#add-workflow-item-form').serialize(),
         success: function(){
-            $('#modalHolder').modal('hide');
+            $('#modalHolder').parent().hide();
             GetWorkflowList();
         }
     });
@@ -52,7 +52,7 @@ function EditWorkflowAction(step_id) {
         url: "/recruitment/workflow/edit/" + step_id + "/",
         data: $('#add-workflow-item-form').serialize(),
         success: function(){
-            $('#modalHolder').modal('hide');
+            $('#modalHolder').parent().hide();
             GetWorkflowList();
         }
     });
