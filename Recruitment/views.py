@@ -65,7 +65,7 @@ def applicant_register(request, app_type=None):
     return TemplateResponse(request, "recruit_register.html", {'form': form,
                             'email_required': email_required,
                             'next_page': next_page,
-                            'app_type': app_type.pk})
+                            'app_type': app_type})
 
 def applicant_login(request, app_type=None):
     email_required = get_config('RECRUIT_REQUIRE_EMAIL', None).value == "1"
@@ -84,14 +84,14 @@ def applicant_login(request, app_type=None):
             return TemplateResponse(request, "recruit_register.html", {'form': form,
                             'email_required': email_required,
                             'next_page': next_page,
-                            'app_type': app_type.pk})
+                            'app_type': app_type})
     else:
         next_page = reverse('Recruitment.views.get_application',
             args=(app_type.pk,))
         return TemplateResponse(request, "recruit_register.html", {'form': form,
                             'email_required': email_required,
                             'next_page': next_page,
-                            'app_type': app_type.pk})
+                            'app_type': app_type})
 
 def get_application(request, app_type_id):
     app_type = get_object_or_404(AppType, pk=app_type_id)
