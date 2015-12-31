@@ -18,7 +18,7 @@
     <form class="form-horizontal" action="/recruitment/register/" method="post">
         {% csrf_token %}
         <input type="hidden" name="next_page" value="{{next_page}}">
-        <input type="hidden" name="app_type" value="{{app_type}}">
+        <input type="hidden" name="app_type" value="{{app_type.pk}}">
         {{ form.non_field_errors}}
         <div class="form-group">
             <label class="control-label col-md-3" for="id_username">Username:</label>
@@ -67,7 +67,7 @@
     <form class="form-horizontal" action="/recruitment/login/" method="post">
         {% csrf_token %}
         <input type="hidden" name="next_page" value="{{next_page}}">
-        <input type="hidden" name="app_type" value="{{app_type}}">
+        <input type="hidden" name="app_type" value="{{app_type.pk}}">
         <div class="form-group">
             <label class="control-label col-md-3" for="username2">Username:</label>
             <div class="controls col-md-9">
