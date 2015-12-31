@@ -27,12 +27,12 @@
                 <select name="action_type" class="form-control input-margin input-sm">
                     <option value="1" {% if action.action_type == 1 %} selected="selected" {% endif %}>Approval - Any recruiter can approve.</option>
                     <option value="2" {% if action.action_type == 2 %} selected="selected" {% endif %}>Countersign - Two recruiters must approve.</option>
-                    <option value="3" {% if action.action_type == 3 %} selected="selected" {% endif %}>Vote - Either a fixed or majority vote is required.</option>
+                    <option value="3" {% if action.action_type == 3 %} selected="selected" {% endif %}>Vote - A fixed amount of votes is required.</option>
                 </select>
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label col-md-4" for="votes-field">Votes Required (blank for majority):</label>
+            <label class="control-label col-md-4" for="votes-field">Votes Required (only for vote):</label>
             <div class="controls col-md-8">
                 <input id="votes-field" type="text" class="input-sm input-margin form-control" name="votes" value="{{action.required_votes}}">
             </div>
