@@ -6,6 +6,11 @@
         <br />
         Please fill out the form below:
     </h4>
+    {% if app_type.frontpage_instructions %}
+	    <p>
+	    {{app_type.frontpage_instructions|linebreaks}}
+	    </p>
+    {% endif %}
 </div>
 {% endblock %}
 {% block content %}
