@@ -357,6 +357,7 @@ class AppQuestionChoice(models.Model):
 
 class AppType(models.Model):
     name = models.CharField(max_length=255, unique=True)
+    frontpage_instructions = models.TextField(null=True, blank=True)
     instructions = models.TextField(null=True, blank=True)
     use_standings = models.ForeignKey(Corporation,
             related_name="applications", null=True)
