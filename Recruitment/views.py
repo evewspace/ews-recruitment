@@ -719,6 +719,7 @@ def _process_app_type_form(request, app_type=None):
         app_type = AppType()
     name = request.POST.get('name', None)
     instructions = request.POST.get('instructions', '')
+    frontpage_instructions = request.POST.get('frontpage_instructions', '')
     disable_user = request.POST.get('disable_user', 'False') == 'on'
     purge_api = request.POST.get('purge_api', 'False') == 'on'
     require_user = request.POST.get('require_user', 'False') == 'on'
@@ -765,6 +766,7 @@ def _process_app_type_form(request, app_type=None):
         raise AttributeError('Name cannot be blank.')
 
     app_type.instructions = instructions
+    app_type.frontpage_instructions = frontpage_instructions
     app_type.use_standings = standings_corp
     app_type.accept_group = accept_group
     app_type.required_votes = required_votes
