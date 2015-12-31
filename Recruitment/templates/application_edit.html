@@ -42,6 +42,12 @@
 		                </div>
 		            </div>
 		            <div class="form-group">
+		                <label for="appInstructions{{application.pk}}" class="col-md-4 control-label">Frontpage (Landing page) Instructions:</label>
+		                <div class="controls col-md-4">
+		                    <textarea type="text" class="input-sm input-margin form-control" id="appInstructions{{application.pk}}" name="frontpage_instructions">{{application.frontpage_instructions}}</textarea>
+		                </div>
+		            </div>
+		            <div class="form-group">
 		                <label for="appInstructions{{application.pk}}" class="col-md-4 control-label">Instructions:</label>
 		                <div class="controls col-md-4">
 		                    <textarea type="text" class="input-sm input-margin form-control" id="appInstructions{{application.pk}}" name="instructions">{{application.instructions}}</textarea>
