@@ -125,7 +125,9 @@ function GetQuestionEditDialog(app_id, stage_id, question_id){
         type: "GET",
         url: '/recruitment/application/' + app_id + '/stage/' + stage_id + '/question/' + question_id + '/',
         success: function(data){
-            $('#modalHolder').html(data).modal('show');
+            recreateModalHolder();
+            $('#modalHolder').html(data);
+            $('#modalHolder').parent().show();
         },
         error: function(error){
             alert('Unable to load the quesiton form: \n\n' + error.responseText);
@@ -140,7 +142,7 @@ function SaveQuestion(app_id, stage_id, question_id){
         url: '/recruitment/application/' + app_id + '/stage/' + stage_id + '/question/' + question_id + '/',
         data: $('#question'+question_id+'EditForm').serialize(),
         success: function(data){
-            $('#modalHolder').empty().modal('hide');
+            $('#modalHolder').parent().hide();
             UpdateApplicationStage(app_id, stage_id);
         },
         error: function(error){

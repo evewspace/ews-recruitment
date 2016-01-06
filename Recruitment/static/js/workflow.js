@@ -15,7 +15,9 @@ function GetAddWorkflowDialog(){
         type: "GET",
         url: "/recruitment/workflow/new/",
         success: function(data){
-            $('#modalHolder').html(data).modal('show');
+            recreateModalHolder();
+            $('#modalHolder').html(data);
+            $('#modalHolder').parent().show();
         }
     });
 }
@@ -25,7 +27,9 @@ function GetEditWorkflowDialog(step_id){
         type: "GET",
         url: "/recruitment/workflow/edit/" + step_id + "/",
         success: function(data){
-            $('#modalHolder').html(data).modal('show');
+            recreateModalHolder();
+            $('#modalHolder').html(data);
+            $('#modalHolder').parent().show();
         }
     });
 }
@@ -36,7 +40,7 @@ function SaveNewWorkflowAction() {
         url: "/recruitment/workflow/new/",
         data: $('#add-workflow-item-form').serialize(),
         success: function(){
-            $('#modalHolder').modal('hide');
+            $('#modalHolder').parent().hide();
             GetWorkflowList();
         }
     });
@@ -48,7 +52,7 @@ function EditWorkflowAction(step_id) {
         url: "/recruitment/workflow/edit/" + step_id + "/",
         data: $('#add-workflow-item-form').serialize(),
         success: function(){
-            $('#modalHolder').modal('hide');
+            $('#modalHolder').parent().hide();
             GetWorkflowList();
         }
     });

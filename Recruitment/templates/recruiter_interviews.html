@@ -2,8 +2,8 @@
 <form id="addInterviewForm">
 	<div id="addInterview">
 		<label for="interview" class="control-label">Text interview:</label>
-	    <div class="controls">
-	        <textarea class="form-control input-xxlarge" rows="5" id="interview" name="interview"></textarea>
+	    <div class="controls input-margin">
+	        <textarea class="form-control" rows="5" id="interview" name="interview"></textarea>
 		</div>
 	</div>
 	<div class="controls">
@@ -13,8 +13,8 @@
 <div id="interviewListHolder">
 <ul class="nav nav-pills nav-stacked">
 {% for interview in app.interviews.all %}
-	<li><a onclick="RecruiterToggleChatlog('chatlog_{{interview.pk}}')" href='#here'>Chatlog by {{interview.interviewer.username}} added on {{interview.timestamp|date:"Y-m-d H:i"}}</a></li>
-	<div id='chatlog_{{interview.pk}}' style='display: none;'>{{interview.chatlog|linebreaksbr}}</div>
+	<li data-toggle="tab"><a onclick="$('.chatlog').hide(); RecruiterToggleChatlog('chatlog_{{interview.pk}}')" href='#here'>Chatlog by {{interview.interviewer.username}} added on {{interview.timestamp|date:"Y-m-d H:i"}}</a></li>
+	<div class="chatlog" id='chatlog_{{interview.pk}}' style='display: none; margin-left: 15px'>{{interview.chatlog|linebreaksbr}}</div>
 {% endfor %}
 </ul>
 </div>

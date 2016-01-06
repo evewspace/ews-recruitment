@@ -10,8 +10,8 @@
             <tr>
             	<td>Reopen application</td>
             	<td>
-            		<button id="btnReopenApp" type="submit" class="btn btn-success" onclick=";">Reopen</button>
-		    		<button id="btnReallyReopen" class="btn btn-warning" style="display: none;"  onclick=";">Really?</button>
+            		<button id="btnReopenApp" type="submit" class="btn btn-primary btn-sm" onclick=";">Reopen</button>
+		    		<button id="btnReallyReopen" class="btn btn-warning btn-sm" style="display: none;"  onclick=";">Really?</button>
             	</td>
             <tr>
             <script type="text/javascript">
@@ -35,9 +35,9 @@
                 <td>Meets required accept votes</td>
                 <td>
                 {% if accept < app.app_type.required_votes %}
-                	 <span class="badge badge-important">&#x2717;</span>
+                	 <span class="label label-pill label-danger">&#x2717;</span>
                 {% else %} 
-                	 <span class="badge badge-success">&#x2713;</span>
+                	 <span class="label label-pill label-success">&#x2713;</span>
                 {% endif %}
                 </td>
             </tr>
@@ -61,9 +61,9 @@
 	                <td>{{action.action.name}}</td>
 	                <td>
 	                    {% if not action.completed %}
-		                	 <span class="badge badge-important">&#x2717;</span>
+		                	 <span class="label label-pill label-danger">&#x2717;</span>
 		                {% else %} 
-		                	 <span class="badge badge-success">&#x2713;</span>
+		                	 <span class="label label-pill label-success">&#x2713;</span>
 		                {% endif %}
 	                </td>
 	            </tr>
@@ -73,12 +73,12 @@
         <form id="commentForm">
 			<div id="commentDiv">
 				<label for="appComment" class="control-label">Comment:</label>
-			    <div class="controls">
-			        <textarea class="form-control input-xxlarge" rows="5" id="appComment" name="appComment"></textarea>
+			    <div class="controls input-margin">
+			        <textarea class="form-control input-sm" rows="5" id="appComment" name="appComment"></textarea>
 				</div>
 			</div>
-			<div class="controls">
-		    	<button type="submit" class="btn btn-success" onclick=";">Submit</button>
+			<div class="controls input-margin">
+		    	<button type="submit" class="btn btn-success btn-sm" onclick=";">Submit</button>
 			</div>
 		</form>
         

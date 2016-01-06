@@ -1,18 +1,18 @@
 <div class="row">
     {% for action in actions %}
-        <div class="span3 well">
+        <div class="col-md-2 well" style="margin: 10px">
             <h4>
                 {{action.name}} 
                 {% if action.required %}
-                <i class="icon-star" title="This is a required action."></i>
+                <i class="glyphicon glyphicon-star" title="This is a required action."></i>
                 {% else %}
-                <i class="icon-star-empty" title="This is NOT a required action."></i>
+                <i class="glyphicon glyphicon-star-empty" title="This is NOT a required action."></i>
                 {% endif %}
             </h4>
             <p class="text-info">{{action.description}}</p>
-            <button class="btn btn-info" onclick="GetEditWorkflowDialog({{action.pk}});"><i class="icon-pencil"></i> Edit</button> 
-            <button id="btnDeleteAction_{{action.pk}}" class="btn btn-danger"><i class="icon-remove"></i> Remove</button>
-            <button id="btnReallyDeleteAction_{{action.pk}}" class="btn btn-warning" style="display: none;"  onclick="DeleteWorkflowAction({{action.pk}});"><i class="icon-remove"></i> Really?</button>
+            <button class="btn btn-info btn-sm" onclick="GetEditWorkflowDialog({{action.pk}});"><i class="glyphicon glyphicon-pencil"></i> Edit</button> 
+            <button id="btnDeleteAction_{{action.pk}}" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-remove"></i> Remove</button>
+            <button id="btnReallyDeleteAction_{{action.pk}}" class="btn btn-warning btn-sm" style="display: none;"  onclick="DeleteWorkflowAction({{action.pk}});"><i class="icon-remove"></i> Really?</button>
             <script type="text/javascript">
             $('#btnDeleteAction_{{action.pk}}').click(function(){
                 $('#btnReallyDeleteAction_{{action.pk}}').show();
@@ -21,12 +21,12 @@
             </script>
         </div>
     {% empty %}
-        <div class="span3 well">
+        <div class="col-md-2 well" style="margin: 10px">
             <h4 class="text-info"> No Actions Defined</h4>
         </div>
     {% endfor %}
-        <div class="span3 well">
-            <button class="btn btn-info btn-block" onclick="GetAddWorkflowDialog();"><i class="icon-plus"></i> Add Action</button>
+        <div class="col-md-2 well" style="margin: 10px">
+            <button class="btn btn-primary btn-block" onclick="GetAddWorkflowDialog();"><i class="icon-plus"></i> Add Action</button>
         </div>
 </div>
 

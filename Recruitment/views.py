@@ -65,7 +65,7 @@ def applicant_register(request, app_type=None):
     return TemplateResponse(request, "recruit_register.html", {'form': form,
                             'email_required': email_required,
                             'next_page': next_page,
-                            'app_type': app_type.pk})
+                            'app_type': app_type})
 
 def applicant_login(request, app_type=None):
     email_required = get_config('RECRUIT_REQUIRE_EMAIL', None).value == "1"
@@ -84,14 +84,14 @@ def applicant_login(request, app_type=None):
             return TemplateResponse(request, "recruit_register.html", {'form': form,
                             'email_required': email_required,
                             'next_page': next_page,
-                            'app_type': app_type.pk})
+                            'app_type': app_type})
     else:
         next_page = reverse('Recruitment.views.get_application',
             args=(app_type.pk,))
         return TemplateResponse(request, "recruit_register.html", {'form': form,
                             'email_required': email_required,
                             'next_page': next_page,
-                            'app_type': app_type.pk})
+                            'app_type': app_type})
 
 def get_application(request, app_type_id):
     app_type = get_object_or_404(AppType, pk=app_type_id)
@@ -100,8 +100,7 @@ def get_application(request, app_type_id):
     if not app_type.require_account and not request.user.is_authenticated():
         return applicant_register(request, app_type)
     app = app_type.start_application(request.user)
-    return HttpResponseRedirect(
-            reverse('Recruitment.views.get_application_form', args=(app.pk,)))
+    return HttpResponseRedirect('recruitment/application/' + str(app.pk))
 
 @login_required
 def get_application_form(request, app_id):
@@ -720,6 +719,7 @@ def _process_app_type_form(request, app_type=None):
         app_type = AppType()
     name = request.POST.get('name', None)
     instructions = request.POST.get('instructions', '')
+    frontpage_instructions = request.POST.get('frontpage_instructions', '')
     disable_user = request.POST.get('disable_user', 'False') == 'on'
     purge_api = request.POST.get('purge_api', 'False') == 'on'
     require_user = request.POST.get('require_user', 'False') == 'on'
@@ -766,6 +766,7 @@ def _process_app_type_form(request, app_type=None):
         raise AttributeError('Name cannot be blank.')
 
     app_type.instructions = instructions
+    app_type.frontpage_instructions = frontpage_instructions
     app_type.use_standings = standings_corp
     app_type.accept_group = accept_group
     app_type.required_votes = required_votes

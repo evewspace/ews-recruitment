@@ -29,8 +29,8 @@
                 </td>
                 <td><span title="{{key.validation_error}}">{% if key.valid %} Yes {% else %} No {% endif %}</span></td>
                 <td>
-                    <button class="btn-small btn-danger" onclick="RecruiterAPIDeleteKey({{app.pk}}, {{key.keyid}});">Delete</button>
-                    <button class="btn-small btn-success" onclick="RecruiterAPIEditKey({{app.pk}}, {{key.keyid}});">Edit</button>
+                	<button class="btn btn-sm btn-primary" onclick="RecruiterAPIEditKey({{app.pk}}, {{key.keyid}});">Edit</button>
+                    <button class="btn btn-sm btn-danger" onclick="RecruiterAPIDeleteKey({{app.pk}}, {{key.keyid}});">Delete</button>
                 </td>
             </tr>
             {% empty %}

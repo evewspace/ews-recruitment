@@ -1,11 +1,18 @@
 		{% if search %}
 		<div class="row">
-			<div id="applicationList" class="span6 well">
+			<div id="applicationList" style="margin-left: 10px; margin-top: 10px;" class="col-md-6 well">
 			    <p class="infoText label label-info">Search old applications or review the last 20 closed applications</p><br /><br />
-  			    <form id="usernameFilterForm" class="form-search" action="/recruitment/applications/search/" method="POST">
-				    <input type="text" name="filter" class="input-medium search-query">
-				    <button type="submit" class="btn btn-default">Search by Username</button>
+			    <div class="row" style="width: 300px">
+			    <form id="usernameFilterForm" class="form-search " action="/recruitment/applications/search/" method="POST">
+					<div class="col-md-9 input-margin">
+    					<input name="filter" class="input-sm form-control search-query" type="text">
+    				</div>
+    				<div class="col-md-3 input-margin">
+				    	<button type="submit" class="btn btn-sm btn-primary">Search by Username</button>
+				    </div>
+				    
 				</form>
+				</div>
 			</div>
 		</div>
 		<script type="text/javascript">
@@ -17,7 +24,7 @@
 	    </script>
   		{% endif %}
 	    <div class="row">
-  			<div id="applicationList" class="span3 well">
+  			<div id="applicationList" class="col-md-1 well" style="margin: 10px">
   				<ul id="userList" class="nav nav-pills">
   					{% for app in apps %}
   						<li class="appItem"><a id="app_{{app.pk}}" href="#" style="width: 180px" onclick="OpenActions(this, {{app.pk}}); OpenAction('#Status_{{app.pk}}'); RecruiterStatus({{app.pk}});">{{app.applicant}}</a></li>
@@ -26,7 +33,7 @@
   					{% endfor %}
   				</ul>
   			</div>
-  			<div id="applicationActions_{{app.pk}}" class="span3 well">
+  			<div id="applicationActions_{{app.pk}}" class="col-md-1 well" style="margin: 10px">
   			{% for app in apps %}
 	  			<span class="actionListSpan" id="actionListSpan_{{app.pk}}" style="display: none;">
 	  				<ul id="actionList" class="nav nav-pills">
@@ -48,7 +55,7 @@
 	  			</span>
 	  	    {% endfor %}
   			</div>
-  			<div id="applicationActionDetails" class="span8 well">
+  			<div id="applicationActionDetails" class="col-md-8 well" style="margin: 10px; width: 800px;">
   			
   			</div>
   		</div>

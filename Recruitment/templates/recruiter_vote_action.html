@@ -2,16 +2,16 @@
 <div id="recruiterApprovalAction">
         <h3>{{action_entry.action.name}}</h3>
         {% if action_entry.action.description %}
-            <p class="infoText label label-info">{{action_entry.action.description}}</p>
+            <p class="infoText label label-primary">{{action_entry.action.description}}</p><br /><br />
         {% endif %}
         <table class="table table-hover table-bordered">
             <tr>
                 <th width='60%'>Status</th>
                 <th>
                 {% if not action_entry.completed %}
-                	 <span class="badge badge-important">&#x2717;</span>
+                	 <span class="label label-pills label-danger">&#x2717;</span>
                 {% else %} 
-                	 <span class="badge badge-success">&#x2713;</span>
+                	 <span class="label label-pills label-success">&#x2713;</span>
                 {% endif %}
                 </th>
             </tr>
@@ -26,20 +26,24 @@
         </table>
         <form id="voteForm">
 			<div id="voteDiv">
-			    <label class="radio">
-                    <input name="actionVote" value="0" type="radio"> Against
-                </label>
-                <label class="radio">
-                    <input name="actionVote" value="1" type="radio"> In favor
-                </label>
+				<div class="radio">
+				    <label>
+	                    <input name="actionVote" value="0" type="radio"> Against
+	                </label>
+	            </div>
+	            <div class="radio">
+	                <label>
+	                    <input name="actionVote" value="1" type="radio"> In favor
+	                </label>
+	            </div>
                 <br />
 				<label for="actionComment" class="control-label">Comment:</label>
 			    <div class="controls">
-			        <textarea class="form-control input-xxlarge" rows="5" id="actionComment" name="actionComment"></textarea>
+			        <textarea class="form-control input-margin" rows="5" id="actionComment" name="actionComment"></textarea>
 				</div>
 			</div>
 			<div class="controls">
-		    	<button type="submit" class="btn btn-success" onclick=";">Vote</button>
+		    	<button type="submit" class="btn btn-sm btn-primary" onclick=";">Vote</button>
 			</div>
 		</form>
 		<table class="table table-hover table-bordered">

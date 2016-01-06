@@ -1,7 +1,7 @@
 {% load humanize %}
 <div id="recruiterApprovalAction">
         <h3>Close Application</h3>
-        <p class="infoText label label-info">If not all required actions and votes have been completed or acquired the application cannot be accepted</p>
+        <p class="infoText label label-pill label-primary">If not all required actions and votes have been completed or acquired the application cannot be accepted</p><br /><br />
         <table class="table table-hover table-bordered">
             <tr>
                 <th width='60%'>Actions completed</th>
@@ -11,9 +11,9 @@
                 <th>Required actions completed</th>
                 <th>
                 {% if app.can_be_accepted %}
-                     <span class="badge badge-success">&#x2713;</span>
+                     <span class="label label-pill label-success">&#x2713;</span>
                 {% else %} 
-                	 <span class="badge badge-important">&#x2717;</span>
+                	 <span class="label label-pill label-danger">&#x2717;</span>
                 {% endif %}
                 </th>
             </tr>
@@ -21,9 +21,9 @@
                 <th>Meets required accept votes</th>
                 <th>
                 {% if accept < app.app_type.required_votes %}
-                	 <span class="badge badge-important">&#x2717;</span>
+                	 <span class="label label-pill label-danger">&#x2717;</span>
                 {% else %} 
-                	 <span class="badge badge-success">&#x2713;</span>
+                	 <span class="label label-pill label-success">&#x2713;</span>
                 {% endif %}
                 </th>
             </tr>
@@ -62,28 +62,36 @@
 			<div id="closeAppDiv">
 			    Close as:
 			    {% if app.can_be_accepted and accept >= app.app_type.required_votes %}
-				    <label class="radio">
+			    <div class="radio">
+				    <label>
 	                    <input name="appClose" value="1" type="radio"> Accept
 	                </label>
+	            </div>
                 {% endif %}
-                <label class="radio">
-                    <input name="appClose" value="2" type="radio"> Reject
-                </label>
-                <label class="radio">
-                    <input name="appClose" value="3" type="radio"> Defer
-                </label>
-                <label class="radio">
-                    <input name="appClose" value="0" type="radio"> Duplicate
-                </label>
+                <div class="radio">
+	                <label>
+	                    <input name="appClose" value="2" type="radio"> Reject
+	                </label>
+                </div>
+                <div class="radio">
+	                <label>
+	                    <input name="appClose" value="3" type="radio"> Defer
+	                </label>
+	            </div>
+	            <div class="radio">
+	                <label>
+	                    <input name="appClose" value="0" type="radio"> Duplicate
+	                </label>
+	            </div>
                 <br />
 				<label for="closeAppComment" class="control-label">Comment:</label>
 			    <div class="controls">
-			        <textarea class="form-control input-xxlarge" rows="5" id="closeAppComment" name="closeAppComment"></textarea>
+			        <textarea class="form-control input-margin" rows="5" id="closeAppComment" name="closeAppComment"></textarea>
 				</div>
 			</div>
 			<div class="controls">
-		    	<button id="btnCloseApp" type="submit" class="btn btn-success" onclick=";">Close application</button>
-		    	<button id="btnReallyCloseApp" class="btn btn-warning" style="display: none;"  onclick=";">Really close?</button>
+		    	<button id="btnCloseApp" type="submit" class="btn btn-sm btn-primary" onclick=";">Close application</button>
+		    	<button id="btnReallyCloseApp" class="btn btn-sm btn-warning" style="display: none;"  onclick=";">Really close?</button>
 			</div>
 		</form>
 </div>

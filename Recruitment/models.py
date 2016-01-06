@@ -288,7 +288,7 @@ class Application(models.Model):
         if action.action_type == 2:
             CountersignAction(action=action, application=self).save()
         if action.action_type == 3:
-            VoteAction(action=action, application=self).save()
+            ActionEntry(action=action, application=self).save()
 
     def recreate_workflow_entry(self, action):
         """
@@ -357,6 +357,7 @@ class AppQuestionChoice(models.Model):
 
 class AppType(models.Model):
     name = models.CharField(max_length=255, unique=True)
+    frontpage_instructions = models.TextField(null=True, blank=True)
     instructions = models.TextField(null=True, blank=True)
     use_standings = models.ForeignKey(Corporation,
             related_name="applications", null=True)

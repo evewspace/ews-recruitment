@@ -6,46 +6,51 @@
         <br />
         Please fill out the form below:
     </h4>
+    {% if app_type.frontpage_instructions %}
+	    <p>
+	    {{app_type.frontpage_instructions|linebreaks}}
+	    </p>
+    {% endif %}
 </div>
 {% endblock %}
 {% block content %}
 <div class="application-holder">
-    <form class="form form-horizontal" action="/recruitment/register/" method="post">
+    <form class="form-horizontal" action="/recruitment/register/" method="post">
         {% csrf_token %}
         <input type="hidden" name="next_page" value="{{next_page}}">
-        <input type="hidden" name="app_type" value="{{app_type}}">
+        <input type="hidden" name="app_type" value="{{app_type.pk}}">
         {{ form.non_field_errors}}
-        <div class="control-group">
-            <label class="control-label" for="id_username">Username:</label>
-            <div class="controls">
+        <div class="form-group">
+            <label class="control-label col-md-3" for="id_username">Username:</label>
+            <div class="controls col-md-9">
                 {{form.username.errors}}
-                {{form.username}}
+                <input id="id_username" class="input-sm form-control" style="width: 250px" type="text" name="username" maxlength="30">
             </div>
         </div>
-        <div class="control-group">
-            <label class="control-label" for="id_password1">Password:</label>
-            <div class="controls">
+        <div class="form-group">
+            <label class="control-label col-md-3" for="id_password1">Password:</label>
+            <div class="controls col-md-9">
                 {{form.password1.errors}}
-                {{form.password1}}
+                <input id="id_password1" class="input-sm form-control" style="width: 250px" type="password" name="password1">
             </div>
         </div>
-        <div class="control-group">
-            <label class="control-label" for="id_password2">Confirm Password:</label>
-            <div class="controls">
+        <div class="form-group">
+            <label class="control-label col-md-3" for="id_password2">Confirm Password:</label>
+            <div class="controls col-md-9">
                 {{form.password2.errors}}
-                {{form.password2}}
+                <input id="id_password2" class="input-sm form-control" style="width: 250px" type="password" name="password2">
             </div>
         </div>
-        <div class="control-group">
-            <label class="control-label" for="id_email">Email Address:{% if not email_required %} (Optional){% endif %}</label>
-            <div class="controls">
-                <input type="text" class="input" name="email" id="id_email" />
+        <div class="form-group">
+            <label class="control-label col-md-3" for="id_email">Email Address:{% if not email_required %} (Optional){% endif %}</label>
+            <div class="controls col-md-9">
+                <input type="text"  class="input-sm form-control" style="width: 250px" name="email" id="id_email" />
             </div>
         </div>
         <br />
-        <div class="control-group">
-            <div class="controls">
-                <button class="btn btn-info" type="submit">Register</button>
+        <div class="form-group">
+            <div class="controls col-md-9 col-md-offset-3">
+                <button class="btn btn-primary btn-sm" type="submit">Register</button>
             </div>
         </div>
     </form>
@@ -59,25 +64,25 @@
     </h4>
 </div>
 <div class="application-holder">
-    <form class="form form-horizontal" action="/recruitment/login/" method="post">
+    <form class="form-horizontal" action="/recruitment/login/" method="post">
         {% csrf_token %}
         <input type="hidden" name="next_page" value="{{next_page}}">
-        <input type="hidden" name="app_type" value="{{app_type}}">
-        <div class="control-group">
-            <label class="control-label" for="username2">Username:</label>
-            <div class="controls">
-                <input type="text" class="input" name="username2" widt>
+        <input type="hidden" name="app_type" value="{{app_type.pk}}">
+        <div class="form-group">
+            <label class="control-label col-md-3" for="username2">Username:</label>
+            <div class="controls col-md-9">
+                <input type="text" class="input-sm form-control" style="width: 250px" name="username2" widt>
             </div>
         </div>
-        <div class="control-group">
-            <label class="control-label" for="password3">Password:</label>
-            <div class="controls">
-                <input type="password" class="input" name="password3">
+        <div class="form-group">
+            <label class="control-label col-md-3" for="password3">Password:</label>
+            <div class="controls col-md-9">
+                <input type="password" class="input-sm form-control" style="width: 250px" name="password3">
             </div>
         </div>
-        <div class="control-group">
-            <div class="controls">
-                <br /><button class="btn btn-info" type="submit">Login</button>
+        <div class="form-group">
+            <div class="controls col-md-9 col-md-offset-3">
+                <br /><button class="btn btn-primary btn-sm" type="submit">Login</button>
             </div>
         </div>
     </form>
